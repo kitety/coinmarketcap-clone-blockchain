@@ -11,7 +11,7 @@ const Home: NextPage = () => {
       <Trending />
       {/*  Trending*/}
       <div className="mt-20"></div>
-      {/*  cmctable*/}
+      {/*  CmcTable*/}
     </div>
   )
 }
