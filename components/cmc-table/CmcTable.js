@@ -47,7 +47,7 @@ const CmcTable = () => {
               dRate={coin.quote.USD.percent_change_7d}
               hRateIsIncrement={true}
               marketCapValue={coin.quote.USD.market_cap}
-              marketCapVolume={coin.quote.USD.volume_24h}
+              volumeCryptoValue={coin.quote.USD.volume_24h}
               volumeValue={coin.total_supply}
               circulatingSupply={coin.circulating_supply}
             />

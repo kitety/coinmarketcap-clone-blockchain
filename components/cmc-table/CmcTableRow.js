@@ -3,6 +3,8 @@ import More from '../../assets/svg/more'
 import Star from '../../assets/svg/star'
 import Rate from './Rate'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
+import CoinNameRow from './CoinNameRow'
 
 const styles = {
   tableRow: `text-white border-b border-gray-800 text-[0.93rem]`,
@@ -23,7 +25,7 @@ const graphImages = [
 ]
 
 const CmcTableRow = ({
-  starNum,
+  startNum,
   coinName,
   coinIcon,
   coinSymbol = '---',
@@ -54,9 +56,60 @@ const CmcTableRow = ({
   }
 
   const formatNum = (num) => {
-    return Number(num.toFixed(2)).toLocaleString()
+    return Number(num).toFixed(2).toLocaleString()
   }
 
-  return <div>CmcTableRow</div>
+  return (
+    <tbody className={styles.tableRow}>
+      <tr>
+        <td>
+          <Star />
+        </td>
+        <td>{startNum}</td>
+        {coinIcon ? (
+          <td className="cursor-pointer">
+            <CoinNameRow
+              name={coinName}
+              icon={coinIcon}
+              clicked={viewCoinDetails}
+            />
+          </td>
+        ) : null}
+        <td className="cursor-pointer" onClick={viewPrice}>
+          <p>${formatNum(price)}</p>
+        </td>
+        <td>
+          <Rate isIncrement={hRateIsIncrement} rate={`${formatNum(hRate)}%`} />
+        </td>
+        <td>
+          <Rate isIncrement={dRateIsIncrement} rate={`${formatNum(dRate)}%`} />
+        </td>
+        <td>
+          <div>
+            <p>{formatNum(marketCapValue)} </p>
+          </div>
+        </td>
+        <td>
+          <div>
+            <p>{formatNum(volumeValue)} </p>
+            <p className="text-gary-400">
+              {formatNum(volumeCryptoValue)} {coinSymbol}
+            </p>
+          </div>
+        </td>
+        <td>
+          <div>
+            <p>{formatNum(circulatingSupply)} </p>
+          </div>
+        </td>
+        <td>
+          <Image src={getRandomGraph()} width={150} height={60} alt={'graph'} />
+        </td>
+        <td>
+          <More />
+        </td>
+      </tr>
+    </tbody>
+  )
 }
 export default CmcTableRow
