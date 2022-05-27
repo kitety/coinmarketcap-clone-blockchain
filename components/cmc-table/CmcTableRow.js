@@ -6,9 +6,6 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import CoinNameRow from '../CoinNameRow'
 
-const styles = {
-  tableRow: `text-white border-b border-gray-800 text-[0.93rem]`,
-}
 const graphImages = [
   'https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/52.svg',
   'https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/1.svg',
@@ -60,56 +57,54 @@ const CmcTableRow = ({
   }
 
   return (
-    <tbody className={styles.tableRow}>
-      <tr>
-        <td>
-          <Star />
+    <tr>
+      <td>
+        <Star />
+      </td>
+      <td>{startNum}</td>
+      {coinIcon ? (
+        <td className="cursor-pointer">
+          <CoinNameRow
+            name={coinName}
+            icon={coinIcon}
+            clicked={viewCoinDetails}
+          />
         </td>
-        <td>{startNum}</td>
-        {coinIcon ? (
-          <td className="cursor-pointer">
-            <CoinNameRow
-              name={coinName}
-              icon={coinIcon}
-              clicked={viewCoinDetails}
-            />
-          </td>
-        ) : null}
-        <td className="cursor-pointer" onClick={viewPrice}>
-          <p>${formatNum(price)}</p>
-        </td>
-        <td>
-          <Rate isIncrement={hRateIsIncrement} rate={`${formatNum(hRate)}%`} />
-        </td>
-        <td>
-          <Rate isIncrement={dRateIsIncrement} rate={`${formatNum(dRate)}%`} />
-        </td>
-        <td>
-          <div>
-            <p>{formatNum(marketCapValue)} </p>
-          </div>
-        </td>
-        <td>
-          <div>
-            <p>{formatNum(volumeValue)} </p>
-            <p className="text-gary-400">
-              {formatNum(volumeCryptoValue)} {coinSymbol}
-            </p>
-          </div>
-        </td>
-        <td>
-          <div>
-            <p>{formatNum(circulatingSupply)} </p>
-          </div>
-        </td>
-        <td>
-          <Image src={getRandomGraph()} width={150} height={60} alt={'graph'} />
-        </td>
-        <td>
-          <More />
-        </td>
-      </tr>
-    </tbody>
+      ) : null}
+      <td className="cursor-pointer" onClick={viewPrice}>
+        <p>${formatNum(price)}</p>
+      </td>
+      <td>
+        <Rate isIncrement={hRateIsIncrement} rate={`${formatNum(hRate)}%`} />
+      </td>
+      <td>
+        <Rate isIncrement={dRateIsIncrement} rate={`${formatNum(dRate)}%`} />
+      </td>
+      <td>
+        <div>
+          <p>{formatNum(marketCapValue)} </p>
+        </div>
+      </td>
+      <td>
+        <div>
+          <p>{formatNum(volumeValue)} </p>
+          <p className="text-gary-400">
+            {formatNum(volumeCryptoValue)} {coinSymbol}
+          </p>
+        </div>
+      </td>
+      <td>
+        <div>
+          <p>{formatNum(circulatingSupply)} </p>
+        </div>
+      </td>
+      <td>
+        <Image src={getRandomGraph()} width={150} height={60} alt={'graph'} />
+      </td>
+      <td>
+        <More />
+      </td>
+    </tr>
   )
 }
 export default CmcTableRow

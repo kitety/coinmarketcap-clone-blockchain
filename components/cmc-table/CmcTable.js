@@ -34,24 +34,26 @@ const CmcTable = () => {
         <table className="w-full">
           {/* cmctableheader */}
           <CmcTableHeader />
-          {coinData.map((coin, index) => (
-            <CmcTableRow
-              key={coin.id}
-              coinName={coin.name}
-              startNum={coin.cmc_rank}
-              coinSymbol={coin.symbol}
-              coinIcon={btc}
-              showBuy={true}
-              hRate={coin.quote.USD.percent_change_24h}
-              price={coin.quote.USD.price}
-              dRate={coin.quote.USD.percent_change_7d}
-              hRateIsIncrement={true}
-              marketCapValue={coin.quote.USD.market_cap}
-              volumeCryptoValue={coin.quote.USD.volume_24h}
-              volumeValue={coin.total_supply}
-              circulatingSupply={coin.circulating_supply}
-            />
-          ))}
+          <tbody className="border-b border-gray-800 text-[0.93rem] text-white">
+            {coinData.map((coin, index) => (
+              <CmcTableRow
+                key={coin.id}
+                coinName={coin.name}
+                startNum={coin.cmc_rank}
+                coinSymbol={coin.symbol}
+                coinIcon={btc}
+                showBuy={true}
+                hRate={coin.quote.USD.percent_change_24h}
+                price={coin.quote.USD.price}
+                dRate={coin.quote.USD.percent_change_7d}
+                hRateIsIncrement={true}
+                marketCapValue={coin.quote.USD.market_cap}
+                volumeCryptoValue={coin.quote.USD.volume_24h}
+                volumeValue={coin.total_supply}
+                circulatingSupply={coin.circulating_supply}
+              />
+            ))}
+          </tbody>
         </table>
       </div>
     </div>
