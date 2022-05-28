@@ -2,9 +2,9 @@ import Header from '../../components/Header'
 import solana from '../../assets/solana.png'
 import Usd from '../../assets/svg/usd'
 import { useEffect, useState } from 'react'
-import * as PropTypes from 'prop-types'
 import CmcPriceConverter from '../../components/CmcPriceConverter'
 import Graph from '../../components/Graph'
+import Chat from '../../components/Chat'
 
 const styles = {
   activeTab: `p-1 px-2 mr-2 rounded-lg bg-[#171924]`,
@@ -93,7 +93,10 @@ const Info = () => {
               toSymbol="USD"
             />
           </div>
-          <div className="ml-5 pt-10">{/* Chat */}</div>
+          <div className="ml-5 pt-10">
+            {/* Chat */}
+            <Chat />
+          </div>
         </div>
       </main>
     </div>
