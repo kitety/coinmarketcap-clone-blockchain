@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import Search from '../assets/svg/search'
 import { ConnectButton } from 'web3uikit'
+import Link from 'next/link'
 
 const styles = {
   header: 'bg-[#17171a] text-white h-20 flex gap-[100px] w-full p-[30px]',
@@ -17,12 +18,15 @@ const styles = {
 const Header = () => {
   return (
     <div className={styles.header}>
-      <Image
-        src="https://cdn.jsdelivr.net/gh/kitety/blog_img@master/coinmarketcap_white_1.svg"
-        alt="logo"
-        width={220}
-        height={220}
-      />
+      <Link href={'/'}>
+        <Image
+          src="https://cdn.jsdelivr.net/gh/kitety/blog_img@master/coinmarketcap_white_1.svg"
+          alt="logo"
+          width={220}
+          height={220}
+          className="cursor-pointer"
+        />
+      </Link>
       <div className={styles.headerWrapper}>
         <nav className={styles.nav}>
           <div className={styles.navItem}>
